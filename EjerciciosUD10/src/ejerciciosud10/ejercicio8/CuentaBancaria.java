@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ejerciciosud10.dawbank;
+package ejerciciosud10.ejercicio8;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public class CuentaBancaria {
     private final String iban;
     private final String titular;
     private double saldo;
-    private ArrayList<Movimientos> movimientos = new ArrayList<>();
+    private ArrayList<Movimiento> movimientos = new ArrayList<>();
 
     public CuentaBancaria(String titular) {
         this.iban = "ES" + ((int) (Math.random() * 90) + 10) + " " + ((int) (Math.random() * 9000) + 1000)+ " " + ((int) (Math.random() * 9000) + 1000);
@@ -23,35 +23,40 @@ public class CuentaBancaria {
         saldo = 0;
     }
 
-    public void ingresar(double cantidad) {
-        if (cantidad > 3000) {
-            System.out.println("AVISO: Notificar a hacienda");
-        }
+    public void ingresar(double cantidad) throws AvisarHaciendaException, CuentasExcepcion {
+        
         this.setSaldo(this.getSaldo() + cantidad);
-        getMovimientos().add(new Movimientos("Ingreso", cantidad));
+        getMovimientos().add(new Movimiento("Ingreso", cantidad));
         System.out.println("Ingreso hecho con exito, saldo actual: "+getSaldo());
 
+        if (cantidad>=3000) {
+            throw new AvisarHaciendaException("AVISO A HACIENDA");
+        }
+        
         if (getSaldo() < 0) {
-            System.out.println("AVISO: Saldo negativo");
+            throw new CuentasExcepcion("SALDO NEGATIVO");
         }
     }
 
-    public void retirar(double cantidad) {
-        if (cantidad > 3000) {
-            System.out.println("AVISO: Notificar a hacienda");
-        }
+    public void retirar(double cantidad) throws AvisarHaciendaException, CuentasExcepcion {
+        
 
         if (getSaldo() - cantidad < (-50)) {
-            System.out.println("OPERACION CANCELADA: No se puede tener menos de 50 creditos en negativo");
+            throw new CuentasExcepcion("OPERACION CANCELADA Saldo resultante inferior a -50");
         } else {
             this.setSaldo(this.getSaldo() - cantidad);
-            getMovimientos().add(new Movimientos("Retirada", cantidad));
+            getMovimientos().add(new Movimiento("Retirada", cantidad));
             System.out.println("Retirada hecha con exito, saldo actual: "+getSaldo());
         }
-
-        if (getSaldo() < 0) {
-            System.out.println("AVISO: Saldo negativo");
+        
+        if (cantidad>=3000) {
+            throw new AvisarHaciendaException("AVISO A HACIENDA");
         }
+        
+        if (getSaldo() < 0) {
+            throw new CuentasExcepcion("SALDO NEGATIVO");
+        }
+        
     }
 
     public void movimientos() {
@@ -92,11 +97,11 @@ public class CuentaBancaria {
         this.saldo = saldo;
     }
 
-    public ArrayList<Movimientos> getMovimientos() {
+    public ArrayList<Movimiento> getMovimientos() {
         return movimientos;
     }
 
-    public void setMovimientos(ArrayList<Movimientos> movimientos) {
+    public void setMovimientos(ArrayList<Movimiento> movimientos) {
         this.movimientos = movimientos;
     }
 

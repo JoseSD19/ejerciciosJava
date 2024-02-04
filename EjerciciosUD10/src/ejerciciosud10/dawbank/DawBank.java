@@ -17,6 +17,7 @@ public class DawBank {
         Scanner sc = new Scanner(System.in);
         ArrayList<CuentaBancaria> cuentas = new ArrayList<>();
         boolean seguir, otraOperacion;
+        int cuenta;
 
         do {
             seguir=true;
@@ -34,10 +35,17 @@ public class DawBank {
                     cuentas.add(Metodos.crearcuenta());
                     break;
                 case 3:
+                    do{
                     System.out.println("Teniendo estas cuentas: ");
                     Metodos.mostrarCuentas(cuentas);
                     System.out.println("¿Sobre cual vas a operar?");
-                    int cuenta = (sc.nextInt() - 1);
+                    cuenta = (sc.nextInt() - 1);
+                    
+                        if (cuenta>cuentas.size()||cuenta<0) {
+                            System.out.println("No existe esa cuenta");
+                        }
+                    
+                    }while(cuenta>cuentas.size()||cuenta<0);
                     sc.nextLine();
                     do {
                         otraOperacion=true;
@@ -49,10 +57,10 @@ public class DawBank {
                                 System.out.println("El IBAN es: " + cuentas.get(cuenta).getIban());
                                 break;
                             case 3:
-                                System.out.println("El IBAN es: " + cuentas.get(cuenta).getTitular());
+                                System.out.println("El titular es: " + cuentas.get(cuenta).getTitular());
                                 break;
                             case 4:
-                                System.out.println("El IBAN es: " + cuentas.get(cuenta).getSaldo());
+                                System.out.println("El saldo es: " + cuentas.get(cuenta).getSaldo());
                                 break;
                             case 5:
                                 System.out.println("¿Cuanta cantidad quieres ingresar? ");

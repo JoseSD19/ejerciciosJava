@@ -5,6 +5,7 @@
 package ejerciciosud10;
 
 import ejerciciosud10.dawbank.DawBank;
+import ejerciciosud10.ejercicio8.Ej08;
 import java.util.Scanner;
 
 /**
@@ -46,6 +47,9 @@ public class MainUD10 {
                 break;
             case 8:
                 DawBank.ejecutar();
+                break;
+            case 9:
+                Ej08.ejecutar();
                 break;
             default:
                 throw new AssertionError();
