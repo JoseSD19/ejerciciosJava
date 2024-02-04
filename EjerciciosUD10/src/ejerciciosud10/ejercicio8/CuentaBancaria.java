@@ -69,7 +69,7 @@ public class CuentaBancaria {
                 System.out.println("--------------------");
             }
             System.out.println("\n------------------------"
-                    + "\nSaldo actual-------"+getSaldo()
+                    + "\nSaldo actual\t"+getSaldo()
                     + "\n------------------------");
         }
         

@@ -60,10 +60,10 @@ public class Ej08 {
                                     System.out.println("El IBAN es: " + cuentas.get(cuenta).getIban());
                                     break;
                                 case 3:
-                                    System.out.println("El IBAN es: " + cuentas.get(cuenta).getTitular());
+                                    System.out.println("El titular es: " + cuentas.get(cuenta).getTitular());
                                     break;
                                 case 4:
-                                    System.out.println("El IBAN es: " + cuentas.get(cuenta).getSaldo());
+                                    System.out.println("El saldo es: " + cuentas.get(cuenta).getSaldo());
                                     break;
                                 case 5:
                                 try {
