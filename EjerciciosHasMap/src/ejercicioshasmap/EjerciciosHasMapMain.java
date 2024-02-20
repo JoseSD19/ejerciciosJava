@@ -7,6 +7,8 @@ package ejercicioshasmap;
 
 import ejercicioshasmap.ejercicio1.ExcepcionNota;
 import ejercicioshasmap.ejercicio1.Instituto;
+import ejercicioshasmap.ejercicio2.Horarios;
+import ejercicioshasmap.ejercicio3.Gestion;
 import java.util.Scanner;
 
 /**
@@ -15,9 +17,7 @@ import java.util.Scanner;
  */
 public class EjerciciosHasMapMain {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) throws ExcepcionNota {
         Scanner sc = new Scanner(System.in);
         
@@ -27,6 +27,12 @@ public class EjerciciosHasMapMain {
         switch (opcion) {
             case 1:
                 Instituto.ejecutar();
+                break;
+            case 2:
+                Horarios.ejecutar();
+                break;
+            case 3:
+                Gestion.ejecutar();
                 break;
             default:
                 throw new AssertionError();
