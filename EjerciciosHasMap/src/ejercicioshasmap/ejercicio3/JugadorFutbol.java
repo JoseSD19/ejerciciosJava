@@ -20,11 +20,11 @@ public class JugadorFutbol extends Jugador {
     }
 
     public void registrarGol() {
-        golesMarcados += 1;
+        golesMarcados ++;
     }
 
     @Override
-    public void mostrrDatos() {
+    public void mostrarDatos() {
         System.out.println("Jugador " + id + ":"
                 + "\nNombre: " + nombre
                 + "\nEdad: " + edad

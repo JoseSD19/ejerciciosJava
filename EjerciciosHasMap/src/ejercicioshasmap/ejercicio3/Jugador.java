@@ -20,7 +20,7 @@ public class Jugador {
         this.edad = edad;
     }
 
-    public void mostrrDatos() {
+    public void mostrarDatos() {
         System.out.println("Jugador " + id + ":"
                 + "\nNombre: " + nombre
                 + "\nEdad: " + edad);

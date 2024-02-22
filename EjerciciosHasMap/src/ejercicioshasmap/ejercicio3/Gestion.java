@@ -73,11 +73,15 @@ public class Gestion {
 
         }
 
+        for (Integer ID : jugadores.keySet()) {
+            jugadores.get(ID).mostrarDatos();
+        }
+
         System.out.println("""
                            Que quieres hacer:
                            1)Aumentar un gol
                            2)Aumentar Torneos Ganados
-                           3)Mostrar Jugadores
+                           3)Mostrar un Jugador
                            4)Salir""");
         int opcion = sc.nextInt();
         sc.nextLine();
@@ -112,11 +116,16 @@ public class Gestion {
 
                     break;
                 case 3:
+                    int jugador;
                     
-                    for (Integer key : jugadores.keySet()) {
-                        jugadores.get(key).mostrrDatos();
-                    }
+                    do {
+                        System.out.println("Que jugador quieres mostrar: ");
+                        jugador = sc.nextInt();
+                    } while (0 <= jugador || jugador > jugadores.size());
                     
+                    
+                    jugadores.get(jugador).mostrarDatos();
+
                     break;
                 case 4:
                     seguir = false;

@@ -20,10 +20,10 @@ public class JugadorTenis extends Jugador {
     }
 
     public void ganarTorneo() {
-        torneosGanados += 1;
+        torneosGanados ++;
     }
 
-    public void mostrrDatos() {
+    public void mostrarDatos() {
         System.out.println("Jugador " + id + ":"
                 + "\nNombre: " + nombre
                 + "\nEdad: " + edad
