@@ -36,7 +36,7 @@ public class Coleccion {
         this.listaFiguras = listaFiguras;
     }
 
-    public void aÃ±adirFigura(Figura fig) {
+    public void añadirFigura(Figura fig) {
         this.listaFiguras.add(fig);
     }
 
